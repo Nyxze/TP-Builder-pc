@@ -1,11 +1,13 @@
 <?php
-namespace app\lib\dao;
+namespace app\dao;
 
+use App\lib\AbstractDAO;
 use App\model\Hdd;
-use App\framework\AbstractDAO;
 use \PDO;
 
 class HddDAO extends AbstractDAO {
+
+  
 
     public function __construct(PDO $pdo)
     {

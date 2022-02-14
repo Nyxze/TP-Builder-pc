@@ -1,11 +1,13 @@
 <?php
-namespace app\lib\dao;
+namespace app\dao;
 
-use App\model\Cpu;
 use App\lib\AbstractDAO;
+use App\model\Cpu;
 use \PDO;
 
 class CpuDAO extends AbstractDAO {
+
+  
 
     public function __construct(PDO $pdo)
     {

@@ -1,44 +1,21 @@
 <?php
 namespace App\model;
 
-use App\framework\EntityInterface;
+use App\lib\EntityInterface;
 
 class Cpu implements EntityInterface {
 
     private ?int $id = null;
 
     private ?string $name = null;
-
+    
     private ?float $price = null;
 
-    private Constructor $constructor;
     
+   
+
+
     
-
-
-    /**
-     * Get the value of name
-     *
-     * @return ?string
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set the value of name
-     *
-     * @param ?string $name
-     *
-     * @return self
-     */
-    public function setName(?string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     /**
      * Get the value of id
@@ -65,25 +42,25 @@ class Cpu implements EntityInterface {
     }
 
     /**
-     * Get the value of constructor
+     * Get the value of name
      *
-     * @return Constructor
+     * @return ?string
      */
-    public function getConstructor(): Constructor
+    public function getName(): ?string
     {
-        return $this->constructor;
+        return $this->name;
     }
 
     /**
-     * Set the value of constructor
+     * Set the value of name
      *
-     * @param Constructor $constructor
+     * @param ?string $name
      *
      * @return self
      */
-    public function setConstructor(Constructor $constructor): self
+    public function setName(?string $name): self
     {
-        $this->constructor = $constructor;
+        $this->name = $name;
 
         return $this;
     }
@@ -111,4 +88,5 @@ class Cpu implements EntityInterface {
 
         return $this;
     }
+
 }

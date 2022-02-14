@@ -1,24 +1,47 @@
 <?php
 namespace App\model;
 
-use App\framework\EntityInterface;
+use App\lib\EntityInterface;
 
 class Hdd implements EntityInterface {
 
     private ?int $id = null;
 
     private ?string $name = null;
-
-    private Connecteur $connecteur;
-
-    private ?int $capacity = null;
-
-    private ?int $price;
     
-    private Constructor $constructor;
+    private ?float $price = null;
+
+    private ?string $type = null;
+
     
+   
+
+
     
 
+    /**
+     * Get the value of id
+     *
+     * @return ?int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @param ?int $id
+     *
+     * @return self
+     */
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get the value of name
@@ -45,60 +68,11 @@ class Hdd implements EntityInterface {
     }
 
     /**
-     * Get the value of id
-     *
-     * @return ?int
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @param ?int $id
-     *
-     * @return self
-     */
-    public function setId(?int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    
-    /**
-     * Get the value of capacity
-     *
-     * @return ?int
-     */
-    public function getCapacity(): ?int
-    {
-        return $this->capacity;
-    }
-
-    /**
-     * Set the value of capacity
-     *
-     * @param ?int $capacity
-     *
-     * @return self
-     */
-    public function setCapacity(?int $capacity): self
-    {
-        $this->capacity = $capacity;
-
-        return $this;
-    }
-
-    /**
      * Get the value of price
      *
-     * @return ?int
+     * @return ?float
      */
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
@@ -106,61 +80,38 @@ class Hdd implements EntityInterface {
     /**
      * Set the value of price
      *
-     * @param ?int $price
+     * @param ?float $price
      *
      * @return self
      */
-    public function setPrice(?int $price): self
+    public function setPrice(?float $price): self
     {
         $this->price = $price;
 
         return $this;
     }
 
+
     /**
-     * Get the value of constructor
+     * Get the value of type
      *
-     * @return Constructor
+     * @return ?string
      */
-    public function getConstructor(): Constructor
+    public function getType(): ?string
     {
-        return $this->constructor;
+        return $this->type;
     }
 
     /**
-     * Set the value of constructor
+     * Set the value of type
      *
-     * @param Constructor $constructor
+     * @param ?string $type
      *
      * @return self
      */
-    public function setConstructor(Constructor $constructor): self
+    public function setType(?string $type): self
     {
-        $this->constructor = $constructor;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of connecteur
-     *
-     * @return Connecteur
-     */
-    public function getConnecteur(): Connecteur
-    {
-        return $this->connecteur;
-    }
-
-    /**
-     * Set the value of connecteur
-     *
-     * @param Connecteur $connecteur
-     *
-     * @return self
-     */
-    public function setConnecteur(Connecteur $connecteur): self
-    {
-        $this->connecteur = $connecteur;
+        $this->type = $type;
 
         return $this;
     }

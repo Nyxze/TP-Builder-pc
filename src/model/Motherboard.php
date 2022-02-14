@@ -1,7 +1,7 @@
 <?php
 namespace App\model;
 
-use App\framework\EntityInterface;
+use App\lib\EntityInterface;
 
 class Motherboard implements EntityInterface {
 
@@ -9,19 +9,15 @@ class Motherboard implements EntityInterface {
 
     private ?string $name = null;
     
-    private Ram $ram;
+    private ?float $price = null;
 
-    private Cpu $cpu;
-    
-    private Type $type;
-
-    private Constructor $constructor;
-
+    private ?string $format = null;
 
     
    
 
 
+    
 
     /**
      * Get the value of id
@@ -72,97 +68,51 @@ class Motherboard implements EntityInterface {
     }
 
     /**
-     * Get the value of ram
+     * Get the value of price
      *
-     * @return Ram
+     * @return ?float
      */
-    public function getRam(): Ram
+    public function getPrice(): ?float
     {
-        return $this->ram;
+        return $this->price;
     }
 
     /**
-     * Set the value of ram
+     * Set the value of price
      *
-     * @param Ram $ram
+     * @param ?float $price
      *
      * @return self
      */
-    public function setRam(Ram $ram): self
+    public function setPrice(?float $price): self
     {
-        $this->ram = $ram;
+        $this->price = $price;
 
         return $this;
     }
 
+
+    
     /**
-     * Get the value of cpu
+     * Get the value of format
      *
-     * @return Cpu
+     * @return ?string
      */
-    public function getCpu(): Cpu
+    public function getFormat(): ?string
     {
-        return $this->cpu;
+        return $this->format;
     }
 
     /**
-     * Set the value of cpu
+     * Set the value of format
      *
-     * @param Cpu $cpu
+     * @param ?string $format
      *
      * @return self
      */
-    public function setCpu(Cpu $cpu): self
+    public function setFormat(?string $format): self
     {
-        $this->cpu = $cpu;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of type
-     *
-     * @return Type
-     */
-    public function getType(): Type
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set the value of type
-     *
-     * @param Type $type
-     *
-     * @return self
-     */
-    public function setType(Type $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of constructor
-     *
-     * @return Constructor
-     */
-    public function getConstructor(): Constructor
-    {
-        return $this->constructor;
-    }
-
-    /**
-     * Set the value of constructor
-     *
-     * @param Constructor $constructor
-     *
-     * @return self
-     */
-    public function setConstructor(Constructor $constructor): self
-    {
-        $this->constructor = $constructor;
+        $this->format = $format;
 
         return $this;
     }

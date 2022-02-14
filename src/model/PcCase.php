@@ -3,7 +3,7 @@ namespace App\model;
 
 use App\lib\EntityInterface;
 
-class Boitier implements EntityInterface {
+class PcCase implements EntityInterface {
 
     private ?int $id = null;
 
@@ -11,11 +11,13 @@ class Boitier implements EntityInterface {
     
     private ?float $price = null;
 
-    private Type $type;
+    private ?string $format = null;
 
     
    
 
+
+    
 
     /**
      * Get the value of id
@@ -42,7 +44,7 @@ class Boitier implements EntityInterface {
     }
 
     /**
-     * Get the value of caseName
+     * Get the value of name
      *
      * @return ?string
      */
@@ -52,9 +54,9 @@ class Boitier implements EntityInterface {
     }
 
     /**
-     * Set the value of caseName
+     * Set the value of name
      *
-     * @param ?string $caseName
+     * @param ?string $name
      *
      * @return self
      */
@@ -68,9 +70,9 @@ class Boitier implements EntityInterface {
     /**
      * Get the value of price
      *
-     * @return ?int
+     * @return ?float
      */
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
@@ -78,39 +80,37 @@ class Boitier implements EntityInterface {
     /**
      * Set the value of price
      *
-     * @param ?int $price
+     * @param ?float $price
      *
      * @return self
      */
-    public function setPrice(?int $price): self
+    public function setPrice(?float $price): self
     {
         $this->price = $price;
 
         return $this;
     }
 
-   
-
     /**
-     * Get the value of type
+     * Get the value of format
      *
-     * @return Type
+     * @return ?string
      */
-    public function getType(): Type
+    public function getFormat(): ?string
     {
-        return $this->type;
+        return $this->format;
     }
 
     /**
-     * Set the value of type
+     * Set the value of format
      *
-     * @param Type $type
+     * @param ?string $format
      *
      * @return self
      */
-    public function setType(Type $type): self
+    public function setFormat(?string $format): self
     {
-        $this->type = $type;
+        $this->format = $format;
 
         return $this;
     }

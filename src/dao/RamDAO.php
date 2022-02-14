@@ -1,15 +1,17 @@
 <?php
-namespace app\lib\dao;
+namespace app\dao;
 
-use App\model\Motherboard;
-use App\framework\AbstractDAO;
+use App\lib\AbstractDAO;
+use App\model\Ram;
 use \PDO;
 
 class RamDAO extends AbstractDAO {
 
+  
+
     public function __construct(PDO $pdo)
     {
-        parent::__construct($pdo, "rams", Ram::class);
+        parent::__construct($pdo, "rams", Cpu::class);
     }
 
 }

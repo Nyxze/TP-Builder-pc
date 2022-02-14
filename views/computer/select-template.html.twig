@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+<select class ="form-select" name ="pc-case">
+<option value="">----</option>
+{% for item in list %}
+<option value="{{item.name}}">{{item.name}}</option>
+{% endfor %}
+
+{% endblock %}

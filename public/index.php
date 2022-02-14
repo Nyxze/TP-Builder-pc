@@ -24,7 +24,7 @@ $app = Bridge::create($container);
 
 $app->get("/", [HomeController::class, "hello"]);
 $app->group("/computer", function(RouteCollectorProxyInterface $group){
-    $group->get("/build", [ComputerBuilderController::class,"showAll"]);
+    $group->get("/build", [ComputerBuilderController::class,"build"]);
 });
 $app->run();
 
