@@ -1,5 +1,5 @@
 <?php
-namespace app\dao;
+namespace App\dao;
 
 use App\lib\AbstractDAO;
 use App\model\Cpu;

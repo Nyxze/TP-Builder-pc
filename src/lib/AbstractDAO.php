@@ -258,4 +258,14 @@ abstract class AbstractDAO {
     }
 
 
+
+    /**
+     * Get the value of foreignKeys
+     *
+     * @return array
+     */
+    public function getForeignKeys(): array
+    {
+        return $this->foreignKeys;
+    }
 }

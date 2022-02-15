@@ -1,0 +1,41 @@
+{% extends "base.html.twig"%}
+
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Case</th>
+        <th>Motherboard</th>
+        <th>Cpu</th>
+        <th>Gpu</th>
+        <th>Hdd</th>
+        <th>Ram</th>
+    </thead>
+    <tbody>
+        {% for i in list %}
+        <tr>
+            
+            <td> {{i.name}} </td>
+            <td> {{i.case.name}} </td>
+            <td>{{i.motherboard.name}} </td>
+            <td>{{i.cpu.name}} </td>
+            <td>{{i.gpu.name}} </td>
+            <td>{{i.hdd.name}}</td>
+            <td>{{i.ram.name}} </td>
+            <td>
+                <a href="/computer/build/{{ i.id }}" class="btn btn-primary">
+                    modifier
+                </a>
+            </td>
+            
+        </tr>
+       
+        {% endfor %}
+    </tbody>
+   
+</table>
+
+{% endblock %}
+

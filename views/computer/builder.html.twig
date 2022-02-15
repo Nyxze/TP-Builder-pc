@@ -1,1 +1,40 @@
-{% extends "computer/select-template.html.twig"%}
+{% extends "base.html.twig" %}
+{% block js %}
+
+	{{parent() }}
+
+	<script>
+    
+
+
+	</script>
+{% endblock %}
+
+
+{% block content %}
+
+	<form method="post">
+		<input type="hidden" name="case[id]">
+		<input type="hidden" name="ram[id]">
+		<input type="hidden" name="gpu[id]">
+		<input type="hidden" name="cpu[id]">
+
+        {% for name,component in listComponent %}
+		<input type="text" placeholder="{{name}}">
+
+		<select  id="pc-{{name}}" class="form-select" name="computer[{{name}}]">
+
+			<option value="">----</option>
+
+			{% for item in component %}
+				<option value="{{item.id}}"> {{item.name}} </option>
+			{% endfor %}
+
+		</select>
+        {% endfor %}
+		<button type="submit" class="btn btn-primary w-50 mt-2">
+			Valider
+		</button>
+	</form>
+
+{% endblock %}
