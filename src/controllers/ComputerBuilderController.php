@@ -26,9 +26,23 @@ class ComputerBuilderController extends AbstractWebController
 
     }
 
+    public function showAllComponent(ResponseInterface $response,$component){
+        $listComponent = $this->getComponent($component);
+        $data = json_encode($listComponent);
+        $response->getBody()->write($data);
+       return $response->withHeader('Content-type','application/json');
+    }
+
+    public function showOne(ResponseInterface $response, $component, $id){
+        $componentInfo = $this->getComponentById($component,$id);
+         $data = json_encode($componentInfo);
+         $response->getBody()->write($data);
+        return $response->withHeader('Content-type','application/json');
+    }
+
      public function buildComputer(ResponseInterface $response){
          
-        $listComponent = $this->getComponent(["PcCase","Ram","Cpu","Gpu","Hdd","Motherboard"]);
+        $listComponent = $this->getComponent("PcCase");
          return $this->render($response,"computer/builder.html.twig",
         [
             "listComponent"=>$listComponent
@@ -70,7 +84,7 @@ class ComputerBuilderController extends AbstractWebController
    
     public function showAllComputer(ResponseInterface $response){
 
-        $list = $this->getComponent(["Computer"]);
+        $list = $this->getComponent("Computer");
         var_dump($list);
         return $this->render($response,"computer/list.html.twig",
         [
@@ -92,13 +106,17 @@ class ComputerBuilderController extends AbstractWebController
             ]);
 
     }
-   public function getComponent(array $array = []){
-    $listComponent = [];
-    foreach($array as $key=>$val){
-        $listComponent[$val] = $this->createDAO($val)->findAll()->getAllAsObject();
-        
-    }
-    return $listComponent;
 
+    
+   public function getComponent(string $component){
+    $data = $this->createDAO($component)->findAll()->getAllAsArray();
+    return $data;
+
+   }
+
+   public function getComponentById($component,$id){
+    $data = $this->createDAO($component)->findOneById($id)->getOneAsArray();
+    return $data;
+ 
    }
 }

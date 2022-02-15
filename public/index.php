@@ -18,7 +18,12 @@ $container->set("Twig",function (){
 
 $app = Bridge::create($container);
 
-$app->get("/", [HomeController::class, "hello"]);
+
+$app->group("/api", function(RouteCollectorProxyInterface $group){
+    
+    $group->get("/{component}/all", [ComputerBuilderController::class,"showAllComponent"]); 
+    $group->get("/{component}/{id}", [ComputerBuilderController::class,"showOne"]);
+});
 $app->group("/computer", function(RouteCollectorProxyInterface $group){
     
     $group->get("/build", [ComputerBuilderController::class,"buildComputer"]);
