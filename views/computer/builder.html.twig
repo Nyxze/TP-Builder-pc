@@ -2,54 +2,33 @@
 {% block js %}
 
 	{{parent() }}
-	<script>
-
-	async function requestComponentFromDatabase(component){
-
-		const response = await fetch(`http://localhost:8000/api/${component}/all`)
-  		const data = await response.json();
-		  console.log(data);
-  		return data
-  	
-};
-	async function requestComponent(component, id ){
-		const response = await fetch(`http://localhost:8000/api/${component}/${id}`)
-  		const data = await response.json();
-		console.log(data);
-  		return data
-  	
-};
-
-const populateComponentOptions = (data) => {
-  var select = document.querySelector("#municipality");
- 
-  data.forEach(function(municipality) {
-    var option = document.createElement("option");
-    option.value = municipality.id;
-    option.text = municipality.name;
-    option.selected = select.value == municipality.id;
-    select.add(option);
-  });
-};
-
-requestComponentFromDatabase("PcCase").then(populateComponentOptions);
-requestComponent("PcCase","1").then(populateComponentOptions);
-requestComponentFromDatabase().then((res)=>{
-	$.each( res, function( key,val ) {
- 		console.log( key,val );
-		});
-	
-})
 
 
-	</script>
+		<script src="/assets/js/js.js" > </script>    
+
 {% endblock %}
 
 
 {% block content %}
 
 	<form method="post">
-		<select id="municipality"></select>
+		<div id="component-list" class=" mb-4 mt-4">
+                <div  id ="component-select-template"class="col-10">
+                    {% for i in listComponent %}
+						{% if i == "PcCase" %}
+						<select name="computer[{{i}}]" id="{{i}}">
+							<option value="">Select {{i}}</option>
+						</select> 
+						{% endif %}
+						
+					<select hidden="hidden" name="computer[{{i}}]" id="{{i}}"></select> 
+         			{% endfor %}
+				</div>
+		</div>
+		
+		
+		 <button type="submit"> Valider</button>
+		
 	</form>
 
 {% endblock %}

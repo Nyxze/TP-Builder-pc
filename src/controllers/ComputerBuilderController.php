@@ -26,23 +26,31 @@ class ComputerBuilderController extends AbstractWebController
 
     }
 
-    public function showAllComponent(ResponseInterface $response,$component){
+    public function showByComponent(ResponseInterface $response,$component){
         $listComponent = $this->getComponent($component);
         $data = json_encode($listComponent);
         $response->getBody()->write($data);
        return $response->withHeader('Content-type','application/json');
     }
 
-    public function showOne(ResponseInterface $response, $component, $id){
+    public function showOneComponent(ResponseInterface $response, $component, $id){
         $componentInfo = $this->getComponentById($component,$id);
          $data = json_encode($componentInfo);
          $response->getBody()->write($data);
         return $response->withHeader('Content-type','application/json');
     }
 
+    public function showComponent(ResponseInterface $response){
+        $listComponent = $this->getComponent("Computer");
+        $data = json_encode($listComponent);
+        $response->getBody()->write($data);
+        return $response->withHeader('Content-type','application/json');
+    }
+
      public function buildComputer(ResponseInterface $response){
          
-        $listComponent = $this->getComponent("PcCase");
+        $listComponent = ["PcCase","motherboard","cpu","gpu","hdd"];
+        var_dump($listComponent);
          return $this->render($response,"computer/builder.html.twig",
         [
             "listComponent"=>$listComponent
@@ -50,42 +58,25 @@ class ComputerBuilderController extends AbstractWebController
 
         ]  );
         
-        
-
-    }
+        }     
 
     public function saveComputer(ResponseInterface $response, RequestInterface $request){
-        $computer = $this->createDAO("Computer");
         $data = $request->getParsedBody();
-
-        foreach($data["computer"] as $key=>$val){
-            $methodName = "get".$key."DAO";
+        $methodName = "set";
+        $computer = $this->createDAO("Computer");
+        foreach($data["computer"] as $test=>$val){
+            $methodName = "set".$test."DAO";
             $computer->$methodName();
-            $daoList[$key] = $this->createDAO($key);
-
-       } 
-
-    
-       var_dump($computer);
-
-      
-
-        
-
-        // $computerDAO->save($computer);
-        // var_dump($computerDAO);
-       
-        
-
-
+            var_dump($test);
+            var_dump($val);
+        }
         return $response;
     }
 
    
     public function showAllComputer(ResponseInterface $response){
 
-        $list = $this->getComponent("Computer");
-        var_dump($list);
+        $list = $this->createDAO("Computer")->findAll()->getAllAsObject();
         return $this->render($response,"computer/list.html.twig",
         [
 
@@ -93,29 +84,15 @@ class ComputerBuilderController extends AbstractWebController
         ]);
     }
 
-
-
-    public function showComponent(ResponseInterface $response, $componentName=null)
-    {  
-        $listComponent = $this->getComponent($componentName);   
-        return $this->render($response, "computer/builder.html.twig",
-
-            [
-                "listComponent" => $listComponent,
-
-            ]);
-
-    }
-
     
    public function getComponent(string $component){
-    $data = $this->createDAO($component)->findAll()->getAllAsArray();
+    $data[$component] = $this->createDAO($component)->findAll()->getAllAsArray();
     return $data;
 
    }
 
    public function getComponentById($component,$id){
-    $data = $this->createDAO($component)->findOneById($id)->getOneAsArray();
+    $data[$component] = $this->createDAO($component)->findOneById($id)->getOneAsArray();
     return $data;
  
    }

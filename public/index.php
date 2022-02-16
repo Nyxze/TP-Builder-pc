@@ -21,8 +21,9 @@ $app = Bridge::create($container);
 
 $app->group("/api", function(RouteCollectorProxyInterface $group){
     
-    $group->get("/{component}/all", [ComputerBuilderController::class,"showAllComponent"]); 
-    $group->get("/{component}/{id}", [ComputerBuilderController::class,"showOne"]);
+    $group->get("/component", [ComputerBuilderController::class,"shoWComponent"]); 
+    $group->get("/{component}/all", [ComputerBuilderController::class,"showByComponent"]); 
+    $group->get("/{component}/{id}", [ComputerBuilderController::class,"showOneComponent"]);
 });
 $app->group("/computer", function(RouteCollectorProxyInterface $group){
     

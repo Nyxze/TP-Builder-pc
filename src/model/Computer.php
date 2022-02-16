@@ -50,7 +50,7 @@ class Computer implements EntityInterface {
      *
      * @return PcCase
      */
-    public function getPcCase(): PcCase
+    public function getCase(): PcCase
     {
         return $this->case;
     }
@@ -62,7 +62,7 @@ class Computer implements EntityInterface {
      *
      * @return self
      */
-    public function setPcCase(PcCase $case): self
+    public function setCase(PcCase $case): self
     {
         $this->case = $case;
 

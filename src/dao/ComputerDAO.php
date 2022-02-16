@@ -46,7 +46,26 @@ class ComputerDAO extends AbstractDAO {
     }
 
    
+// save and update
+// protected function manageAssociation(Post $post): void{
+//     $author = $post->getAuthor();
+//     if($author){
+//         $authorDAO = $this->getAuthorDAO();
+//         $authorDAO->save($author);
+//     }
+// }
 
+// public function update(EntityInterface $entity): void{
+//     $this->manageAssociation($entity);
+//     parent::update($entity);
+// }
+
+// public function insert(EntityInterface $entity): void{
+//     $this->manageAssociation($entity);
+//     parent::insert($entity);
+// }
+
+//
 
    
 
@@ -70,7 +89,7 @@ class ComputerDAO extends AbstractDAO {
      *
      * @return ?PcCaseDAO
      */
-    public function getPcCaseDAO(): PcCaseDAO
+    public function getCaseDAO(): PcCaseDAO
     {
 
         if($this->caseDAO == null){
